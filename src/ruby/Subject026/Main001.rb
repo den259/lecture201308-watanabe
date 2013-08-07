@@ -11,8 +11,8 @@ class Mat
   include Count
 
   def figure(x, y)
-    total = sum(x, y)
-    puts "sum=",total
+      total = sum(x, y)
+      puts "sum=",total
   end
 end
 
