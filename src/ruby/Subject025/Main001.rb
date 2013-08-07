@@ -8,7 +8,7 @@ end
 
 class Word
    def method002
-   	   puts "I'm method002"
+      puts "I'm method002"
    end
 end
 
