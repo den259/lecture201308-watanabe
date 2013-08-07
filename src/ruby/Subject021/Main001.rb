@@ -4,6 +4,6 @@ require 'pp'
 day = Date::today
 Day = day.to_s
 
-puts  day
+puts  Day
 p Day
 pp Day
