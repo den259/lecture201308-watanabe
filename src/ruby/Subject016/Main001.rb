@@ -2,7 +2,7 @@
 
 require "date"
 
-date = Date.new(2013, 8 ,6)
+date = Date.new(2013, 8 ,7)
 
 puts date
 
