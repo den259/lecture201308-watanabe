@@ -1,6 +1,6 @@
 #coding: utf-8
 
-#ƒVƒ“ƒ{ƒ‹
+#Âƒæ–‡å­—åˆ—
 str1 = :apple
 str2 = :apple
 
@@ -8,7 +8,7 @@ puts str1 ==str2
 puts str1.equal?(str2)
 
 
-#•¶Žš—ñ
+#ã‚·ãƒ³ãƒœãƒ«
 str3 = "apple"
 str4 = "apple"
 
