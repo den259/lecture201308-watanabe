@@ -1,7 +1,8 @@
 
 class Object
   def current_method001
-    caller.first.scan(/`(.*)'/) .to_s
+  	__method__.class
+    # caller.first.scan(/`(.*)'/) .to_s
   end
 end
 
