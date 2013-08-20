@@ -23,6 +23,12 @@ table.tasks col.due_date {
   background-color: #ddd;
 }
 
+div#task_category {
+  color: #080;
+  font-weight: bold;
+}
+  
+
 div#task_due_date {
   text-align: right;
   color: #f00;
@@ -45,3 +51,8 @@ ul#categories li{
   display: inline;
   padding: 5px;
 } 
+
+ul#categories li.selected {
+  font-weight: bold;
+}
+  
