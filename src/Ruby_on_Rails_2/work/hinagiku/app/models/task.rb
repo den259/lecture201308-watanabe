@@ -1,4 +1,6 @@
 class Task < ActiveRecord::Base
+  belongs_to :category
+  
   scope :done, where(:done => true).order("due_date DESC")
   scope :undone, where(:done => false).order("due_date")
   scope :search, lambda { |query|
@@ -6,5 +8,5 @@ class Task < ActiveRecord::Base
  }
 
   validates :name, :presence => true
-  validates :name, :description, :length => { :maximum => 20}
+  validates :name, :description, :length => { :maximum => 200}
 end
