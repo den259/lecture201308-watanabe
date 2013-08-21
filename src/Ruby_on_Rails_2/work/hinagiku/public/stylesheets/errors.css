@@ -1,7 +1,6 @@
-
 div.field_with_errors label {
   color: #f00;
-  font-wright: bold;
+  font-weight: bold;
 }
 
 div.field_with_errors input[type=text],
