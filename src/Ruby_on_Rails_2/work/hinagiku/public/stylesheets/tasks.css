@@ -1,4 +1,3 @@
-
 table.tasks {
   width: 560px;
   margin: 5px auto;
@@ -27,8 +26,7 @@ div#task_category {
   color: #080;
   font-weight: bold;
 }
-  
-
+ 
 div#task_due_date {
   text-align: right;
   color: #f00;
@@ -40,14 +38,14 @@ div#task_description {
 }
 
 ul#categories {
- with: 540px;
+ width: 540px;
  list-style: none;
  margin: 15px auto 5px;
  padding: 10px;
  border: dotted 1px #ccc;
 }
 
-ul#categories li{
+ul#categories li {
   display: inline;
   padding: 5px;
 } 
