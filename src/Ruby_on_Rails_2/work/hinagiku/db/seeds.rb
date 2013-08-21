@@ -8,7 +8,7 @@ names = [
   "燃えないゴミを出す"
 ]
 
-description = "これは説明です。" 
+description = "これは説明です。"  * 20
 
 Task.destroy_all
 
