@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, :with => :rescue_record_not_found
 
+
   def index
     @categories = Category.all
   end
@@ -13,12 +14,13 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
   end
 
+
   def create
     @category = Category.new(params[:category])
     if @category.save
       redirect_to :categories
     else
-      render :new
+    render :new
     end
   end
 
@@ -31,20 +33,25 @@ class CategoriesController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
     redirect_to :categories
   end
 
+  def show
+    redirect_to :categories, :status => 301
+  end
+
   private
   def rescue_record_not_found(exception)
-  	case params[:action]
+    case params[:action]
     when "destroy"
       redirect_to :categories
     else
-      render_404(exveption)
+      render_404(exception)
     end
-  end
+   end
+
 end
