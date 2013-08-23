@@ -1,8 +1,8 @@
 <%= form_for @category do |form| %>
-<% unless @category.errors.empty? %>
-<p>入力に誤りがあります。</p>
-<ul class="error_messages">
-<% @category.errors.full_messages.each do |message| %>
+  <% unless @category.errors.empty? %>
+    <p>入力に誤りがあります。</p>
+  <ul class="error_messages">
+  <% @category.errors.full_messages.each do |message| %>
 <li><%= message %></li>
 <% end %>
 </ul>
