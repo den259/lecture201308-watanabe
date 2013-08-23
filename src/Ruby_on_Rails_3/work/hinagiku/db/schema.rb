@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130822064743) do
+ActiveRecord::Schema.define(:version => 20130823044718) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "owner_id",   :null => false
   end
 
   create_table "tasks", :force => true do |t|
@@ -24,17 +25,19 @@ ActiveRecord::Schema.define(:version => 20130822064743) do
     t.text     "description"
     t.date     "due_date"
     t.boolean  "done"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "category_id"
+    t.integer  "owner_id",    :null => false
   end
 
   create_table "users", :force => true do |t|
-    t.string   "login_name",      :null => false
-    t.string   "display_name",    :null => false
-    t.string   "password_digest", :null => false
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.string   "login_name",       :null => false
+    t.string   "display_name",     :null => false
+    t.string   "password_digest",  :null => false
+    t.string   "auto_login_token"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   add_index "users", ["login_name"], :name => "index_users_on_login_name", :unique => true
