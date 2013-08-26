@@ -14,10 +14,10 @@ module TasksHelper
   end
 
   def category_options
-    options= [ [ "----", nil ] ]
-  current_user.categories.each do |c|
-     options << [ c.name, c.id ]
+    options = [ [ "----", nil ] ]
+    current_user.categories.each do |c|
+      options << [ c.name, c.id ]
     end
-  options
+    options
   end
 end
