@@ -11,11 +11,18 @@ Hinagiku::Application.routes.draw do
   end
   resource :session, :only => [ :new, :create, :destroy ]
   resource :account, :except => [ :edit ] do
-    get :thanks
+    get :thanks, :unverified
   end
   resource :password, :only => [ :edit, :update ] do
     get :updated
   end
+  resources :emails, :only => [ :update ] do
+    get :updated, :on => :member
+  end
+  get "v/:id/:token" => "emails#verify",
+    :id => /\d+/, :token => /[0-9a-f]+/,
+    :as => :email_verification
+
   match "*anything" => "errors#not_found"
 end
  

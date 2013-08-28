@@ -1,5 +1,5 @@
 class PasswordsController < ApplicationController
-   
+  skip_before_filter :reject_unverified_user
    
   def update
     current_user.attributes = params[:user]
