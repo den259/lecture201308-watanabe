@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, :with => :rescue_record_not_found
 
   def index
-    @categories = current_user.categories
+    @categories = current_user.categories.all
   end
 
   def new
@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to :categories
     else
-    render :new
+      render :new
     end
   end
 
@@ -29,8 +29,8 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to :categories
     else
-    render :edit
-   end
+      render :edit
+    end
   end
 
   def destroy
@@ -39,9 +39,6 @@ class CategoriesController < ApplicationController
     redirect_to :categories
   end
 
-  def show
-    redirect_to :categories, :status => 301
-  end
 
   private
   def rescue_record_not_found(exception)

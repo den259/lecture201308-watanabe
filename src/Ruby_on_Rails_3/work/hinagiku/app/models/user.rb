@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   has_many :emails, :dependent => :destroy
   
   attr_accessor :password, :current_password, :new_password
-  attr_writer :setting_password
+  attr_writer :setting_password, :changing_password
   def setting_password?; @setting_password; end
   def changing_password?; @changing_password; end
   def verified?; verified_at.present?; end
@@ -19,13 +19,18 @@ class User < ActiveRecord::Base
   validates :login_name, :presence => true, :length => { :maximum => 20 },
     :uniqueness => { :case_sensitive => false }
   validates :display_name, :presence => true, :length => { :maximum => 20 }
-  validates :password, :presence => { :if => :setting_password? },
+  validates :password, :presence => { :if => :setting_password? }
+  validates :current_password, :new_password,
+    :presence => { :if => :changing_password? }
+  validates :password, :new_password,
     :length => { :minimum => 4, :allow_blank => true },
     :confirmation => true
-  validates :current_password, :presence => { :if => :changing_password? }
-  validates :new_password, :presence => { :if => :changing_password? },
-    :length => { :minimum => 4, :allow_blank => true },
-    :confirmation => true
+
+  validate do
+    if changing_password? && !authenticate(current_password)
+      errors.add(:current_password, :invalid)
+    end
+  end
 
   before_save do
     if changing_password?
@@ -40,6 +45,7 @@ class User < ActiveRecord::Base
   end
 
   def authenticate(unencrypted_password)
+    password_digest &&
     BCrypt::Password.new(password_digest) == unencrypted_password
   end
 end

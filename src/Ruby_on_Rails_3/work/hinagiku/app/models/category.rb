@@ -13,7 +13,7 @@ class Category < ActiveRecord::Base
 
   private
   IDEOGRAPHIC_SPACE = [ 0x3000 ].pack("U")
-  WHITESPACES = "[Ys#{IDEOGRAPHIC_SPACE}]"
+  WHITESPACES = "[\s#{IDEOGRAPHIC_SPACE}]"
   def normalize_values
     if name.present?
     self.name = NKF.nkf("-WwZ", name)

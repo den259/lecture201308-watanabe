@@ -6,8 +6,8 @@ alice = User.find_by_login_name("alice")
   Category.create({ :name => name, :owner => alice }, :without_protection => true)
 end
 
-tasks = Task.order('id').limit(5).all
-categories = Category.order('id').all
+tasks = Task.order("id").limit(5).all
+categories = Category.order("id").all
 
 
 categories[1].tasks << tasks[0]
