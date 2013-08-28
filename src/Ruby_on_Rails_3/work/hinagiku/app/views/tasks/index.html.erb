@@ -1,5 +1,6 @@
 
 <h1>タスクの一覧</h1>
+
 <%= render "menu" %>
 <%= form_tag [ :search, :tasks ], :method => :get,
   :style => "text-align: right" do %>
@@ -19,12 +20,11 @@
   <tr>
   <td><%= link_to task.name, task %></td>
   <td><%= task.due_date %></td>
-  
   <td><%= links_for(task) %></td>
 
   </tr>
   <% end %>
 </table>
-<%= will_paginate(@tasks,
-  :previous_label => '前', :next_label => '次') %>
+
+<%= will_paginate(@tasks, :previous_label => '前', :next_label => '次') %>
 

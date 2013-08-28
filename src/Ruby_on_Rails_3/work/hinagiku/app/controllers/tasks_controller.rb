@@ -10,21 +10,10 @@ class TasksController < ApplicationController
     render :index
   end
 
-  def done
-    if params[:category_id]
-      @category = Category.find(params[:category_id])
-      @tasks = @category.tasks
-    else
-      @tasks = Task
-    end
-    @tasks = @tasks.done.page(params[:page]).limit(10)
-    render :index
-  end
-
   def search
     @tasks = current_user.tasks.undone
     @tasks = @tasks.search(params[:query]) if params[:query].present?
-    @tasks = @tasks.paginate(:page => params[:page])
+    @tasks = @tasks.page(params[:page]).limit(10)
     render :index
   end
 
@@ -78,6 +67,7 @@ class TasksController < ApplicationController
   end
 
   private
+  
   def prepare
     if params[:category_id]
       @category = current_user.categories.find(params[:category_id])
