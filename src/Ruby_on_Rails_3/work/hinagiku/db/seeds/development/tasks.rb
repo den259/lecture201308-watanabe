@@ -1,7 +1,6 @@
 # -*- encoding: UTF-8 -*-
 
 alice = User.find_by_login_name("alice")
-
 bob = User.find_by_login_name("bob")
 
 names = [

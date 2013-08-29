@@ -1,7 +1,6 @@
 class CreateTasks < ActiveRecord::Migration
   def self.up
     create_table :tasks do |t|
-     # t.integer :category_id
       t.string :name
       t.text :description
       t.date :due_date
