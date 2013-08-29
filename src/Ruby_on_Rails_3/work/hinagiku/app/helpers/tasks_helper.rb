@@ -1,4 +1,4 @@
-#coding: utf-8
+# -*- encoding: UTF-8 -*-
 
 module TasksHelper
   def links_for(task)
